@@ -1,0 +1,11 @@
+.profile__add-image-button {
+  width: 16px;
+  height: 16px;
+}
+
+@media (min-width: 768px) {
+  .profile__add-image-button {
+    width: 22px;
+    height: 22px;
+  }
+}

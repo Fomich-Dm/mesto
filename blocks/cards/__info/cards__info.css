@@ -1,0 +1,12 @@
+.cards__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 15px 31px 21px;
+}
+
+@media (min-width: 520px) {
+  .cards__info {
+    padding: 22px 15px 27px 21px;
+  }
+}

@@ -1,0 +1,18 @@
+.header {
+  padding: 28px 0 0;
+  border-bottom: 1px solid rgba(84, 84, 84, .7);
+}
+
+@media (min-width: 520px) {
+  .header {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    padding: 45px 0 0;
+    width: 880px;
+  }
+}

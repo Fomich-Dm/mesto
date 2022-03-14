@@ -1,0 +1,29 @@
+.popup__content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 88%;
+  margin: 0 auto;
+  padding: 87px 0 0;
+}
+
+@media (min-width: 520px) {
+  .popup__content {
+    width: 66%;
+  }
+}
+
+@media (min-width: 720px) {
+  .popup__content {
+    width: 45%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .popup__content {
+    width: 34%;
+    padding: 155px 0 0;
+  }
+}

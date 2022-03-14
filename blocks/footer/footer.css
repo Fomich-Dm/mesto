@@ -1,0 +1,18 @@
+.footer {
+  padding: 48px 19px 36px;
+  margin: 0 auto;
+}
+
+@media (min-width:520px){
+  .footer {
+    width: 90%;
+    padding: 48px 0 36px;
+  }
+}
+
+@media (min-width: 1024px){
+  .footer {
+    width: 880px;
+  }
+}
+
