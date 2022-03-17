@@ -1,9 +1,0 @@
-.profile__add-content {
-  margin: 33px 0 0;
-}
-
-@media (min-width: 520px) {
-  .profile__add-content {
-    margin: 0;
-  }
-}

@@ -2,11 +2,12 @@
   align-self: flex-end;
   width: 20px;
   height: 20px;
-  background: black;
+  background: bottom;
   margin-bottom: 16px;
   border: none;
   background-image: url(../../../images/Close\ Icon.svg);
   background-size: cover;
+  cursor: pointer;
 }
 
 .popup__close:hover {

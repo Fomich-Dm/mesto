@@ -9,6 +9,8 @@
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
+  margin-top: 33px;
+  background-size: 16px 16px;
 }
 
 .profile__add-button:hover {
@@ -18,12 +20,15 @@
 @media (min-width: 520px) {
   .profile__add-button {
     width: 80px;
+    margin-top: 0;
   }
 }
 
 @media (min-width: 768px) {
   .profile__add-button {
     width: 150px;
+    margin-left: 230px;
+    background-size: 22px 22px;
   }
 }
 

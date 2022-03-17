@@ -9,6 +9,7 @@
   background-position: center;
   cursor: pointer;
   margin-left: 10px;
+  background-size: 7.5px 7.5px;
 }
 
 .profile__edit-button:hover {
@@ -19,5 +20,6 @@
   .profile__edit-button {
     width: 24px;
     height: 24px;
+    background-size: 10px 10px;
   }
 }

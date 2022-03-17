@@ -9,12 +9,15 @@
 @media (min-width: 520px){
   .cards {
     width: 90%;
-    padding: 46px 0 0;
+    padding-top: 46px;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
 @media (min-width: 1024px){
   .cards {
-    width: 880px;
+    max-width: 880px;
+    width: 1000%;
   }
 }

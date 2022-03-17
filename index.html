@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
@@ -13,30 +13,15 @@
     </header>
     <main class="content">
       <section class="profile">
-        <div class="profile__content">
-          <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
-          <div class="profile__info">
-            <div class="profile__names">
-              <h2 class="profile__name">Жак-Ив Кусто</h2>
-              <button class="profile__edit-button" type="button" aria-label="Изменить профиль"></button>
-            </div>
-            <p class="profile__about-me">Исследователь океана</p>
+        <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
+        <div class="profile__info">
+          <div class="profile__names">
+            <h2 class="profile__name">Жак-Ив Кусто</h2>
+            <button class="profile__edit-button" type="button" aria-label="Изменить профиль"></button>
           </div>
+          <p class="profile__about-me">Исследователь океана</p>
         </div>
-        <div class="profile__add-content">
-          <button class="profile__add-button" type="button" aria-label="Добавить контент"></button>
-        </div>
-      </section>
-      <section class="popup">
-        <div class="popup__content">
-          <button class="popup__close" type="button" aria-label="закрыть попап"></button>
-          <form class="popup__info" action="#" method="get">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <input class="popup__name" type="text" name="name" value="Жак-Ив Кусто" placeholder="Ваше имя">
-            <input class="popup__about-me" type="text" name="profession" value="Исследователь океана" placeholder="Ваша профессия">
-            <button class="popup__button" type="submit" aria-label="сохранить">Сохранить</button>
-          </form>
-        </div>
+        <button class="profile__add-button" type="button" aria-label="Добавить контент"></button>
       </section>
       <section class="cards">
         <div class="cards__item">
@@ -78,15 +63,26 @@
           <img class="cards__image" alt="Фото загружно места" src="./images/kirill-pershin-1088404-unsplash.jpg">
           <div class="cards__info">
             <h2 class="cards__name">Карачаево-Черкесия</h2>
-            <button class="cards__like cards__like_active" type="button" aria-label="Поставить лайк"></button>
+            <button class="cards__like" type="button" aria-label="Поставить лайк"></button>
           </div>
         </div>
       </section>
       <footer class="footer">
         <p class="footer__copyright">© 2022 Дмитрий Фомин</p>
       </footer>
+      <div class="popup">
+        <div class="popup__content">
+          <button class="popup__close" type="button" aria-label="закрыть попап"></button>
+          <form class="popup__info" action="#" method="get" name="profile-popup">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <input class="popup__input popup__input_name" type="text" name="name" value="Жак-Ив Кусто" placeholder="Ваше имя">
+            <input class="popup__input popup__input_about-me" type="text" name="profession" value="Исследователь океана" placeholder="Ваша профессия">
+            <button class="popup__button" type="submit" aria-label="сохранить">Сохранить</button>
+          </form>
+        </div>
+      </div>
     </main>
   </div>
-  <script src="./scripts/main.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>

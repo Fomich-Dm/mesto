@@ -5,6 +5,7 @@
   border: none;
   width: 100%;
   height: 46px;
+  cursor: pointer;
 }
 
 @media (min-width: 1024px) {
