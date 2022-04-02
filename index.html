@@ -23,64 +23,56 @@
         </div>
         <button class="profile__add-button" type="button" aria-label="Добавить контент"></button>
       </section>
+
       <section class="cards">
-        <div class="cards__item">
-          <img class="cards__image" alt="Фото загружно места" src="./images/kirill-pershin-1088404-unsplash.jpg">
-          <div class="cards__info">
-            <h2 class="cards__name">Карачаевск Карачаевск Карачаевск</h2>
-            <button class="cards__like" type="button" aria-label="Поставить лайк"></button>
+        <template class="cards-template">
+          <div class="cards__item">
+            <img class="cards__image" alt="Фото загружно места">
+            <button class="cards__delete" type="button" aria-label="удалить место"></button>
+            <div class="cards__info">
+              <h2 class="cards__name"></h2>
+              <button class="cards__like" type="button" aria-label="Поставить лайк"></button>
+            </div>
           </div>
-        </div>
-        <div class="cards__item">
-          <img class="cards__image" alt="Фото загружно места" src="./images/kirill-pershin-1404681-unsplash.jpg">
-          <div class="cards__info">
-            <h2 class="cards__name">Гора Эльбрус</h2>
-            <button class="cards__like" type="button" aria-label="Поставить лайк"></button>
-          </div>
-        </div>
-        <div class="cards__item">
-          <img class="cards__image" alt="Фото загружно места" src="./images/kirill-pershin-1556355-unsplash.jpg">
-          <div class="cards__info">
-            <h2 class="cards__name">Домбай</h2>
-            <button class="cards__like" type="button" aria-label="Поставить лайк"></button>
-          </div>
-        </div>
-        <div class="cards__item">
-          <img class="cards__image" alt="Фото загружно места" src="./images/kirill-pershin-1404681-unsplash.jpg">
-          <div class="cards__info">
-            <h2 class="cards__name">Гора Эльбрус</h2>
-            <button class="cards__like" type="button" aria-label="Поставить лайк"></button>
-          </div>
-        </div>
-        <div class="cards__item">
-          <img class="cards__image" alt="Фото загружно места" src="./images/kirill-pershin-1556355-unsplash.jpg">
-          <div class="cards__info">
-            <h2 class="cards__name">Домбай</h2>
-            <button class="cards__like" type="button" aria-label="Поставить лайк"></button>
-          </div>
-        </div>
-        <div class="cards__item">
-          <img class="cards__image" alt="Фото загружно места" src="./images/kirill-pershin-1088404-unsplash.jpg">
-          <div class="cards__info">
-            <h2 class="cards__name">Карачаево-Черкесия</h2>
-            <button class="cards__like" type="button" aria-label="Поставить лайк"></button>
-          </div>
-        </div>
+        </template>
       </section>
+
       <footer class="footer">
         <p class="footer__copyright">© 2022 Дмитрий Фомин</p>
       </footer>
-      <div class="popup">
+
+      <div class="popup popup_edit">
         <div class="popup__content">
-          <button class="popup__close" type="button" aria-label="закрыть попап"></button>
-          <form class="popup__info" action="#" method="get" name="profile-popup">
+          <button class="popup__close popup__close_edit" type="button" aria-label="закрыть попап"></button>
+          <form class="popup__info popup__info_edit" action="#" method="get" name="profile-popup">
             <h2 class="popup__title">Редактировать профиль</h2>
             <input class="popup__input popup__input_type_name" type="text" name="name" value="Жак-Ив Кусто" placeholder="Ваше имя">
             <input class="popup__input popup__input_type_about" type="text" name="profession" value="Исследователь океана" placeholder="Ваша профессия">
-            <button class="popup__button" type="submit" aria-label="сохранить">Сохранить</button>
+            <button class="popup__button popup__button_edit" aria-label="сохранить">Сохранить</button>
           </form>
         </div>
       </div>
+
+      <div class="popup popup_add">
+        <div class="popup__content">
+          <button class="popup__close popup__close_add" type="button" aria-label="закрыть попап"></button>
+          <form class="popup__info popup__info_add" action="#" method="get" name="profile-popup">
+            <h2 class="popup__title">Новое место</h2>
+            <input class="popup__input popup__input_type_place" type="text" name="name" placeholder="Название места">
+            <input class="popup__input popup__input_type_image" type="text" name="img"  placeholder="Ссылка на картинку">
+            <button class="popup__button popup__button_add" aria-label="сохранить">Создать</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_image">
+        <div class="popup__content-img">
+          <button class="popup__close popup__close_image" type="button" aria-label="закрыть попап"></button>
+          <img class="popup__img" alt="Место" src="#">
+          <h2 class="popup__title-place"></h2>
+        </div>
+      </div>
+
     </main>
   </div>
   <script src="./scripts/index.js"></script>
