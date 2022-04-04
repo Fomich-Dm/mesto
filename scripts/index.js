@@ -51,8 +51,11 @@ function getImgPopup(card) {
   popupToggle(popupImage);
 }
 
-function renderCard(card, container) {
-  container.prepend(card);
+function renderCard(card) {
+
+
+  const data = createCard(card);
+  cards.prepend(data);
 }
 
 
@@ -65,8 +68,11 @@ function createCard(initialCards) {
 
 
 
+
+
+
   setCardActionsListeners(card);
-  return card
+  return card;
 }
 
 function addCard(event) {
@@ -78,7 +84,7 @@ function addCard(event) {
   const newCard = {name : newNameCard, link : newImageCard};
 
 
-  createCard(newCard);
+  renderCard(newCard);
   popupToggle(popupAdd);
   cardsForm.reset();
 }
@@ -97,10 +103,12 @@ function cardsLike(event) {
 function setCardActionsListeners(card) {
   card.querySelector('.cards__delete').addEventListener('click', removeCard);
   card.querySelector('.cards__like').addEventListener('click', cardsLike);
-  renderCard(card, cards);
 }
 
 initialCards.map(createCard);
+initialCards.map(renderCard);
+
+
 
 openPopupEdit.addEventListener('click', function() {
   popupToggle(popupEdit)
