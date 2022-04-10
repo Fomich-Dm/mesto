@@ -24,10 +24,31 @@ const profileAddMe =  document.querySelector('.profile__about-me');
 const titlePopupImg = document.querySelector('.popup__title_place');
 
 
-function popupToggle(item) {
-  item.classList.toggle('popup_opened');
+function popupOpen(item) {
+  item.classList.add('popup_opened');
+  document.addEventListener('keydown', closeEsc);
+  item.addEventListener('mousedown', closeClick);
 }
 
+function popupClose(item) {
+  item.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeEsc);
+  item.removeEventListener('mousedown', closeClick);
+}
+
+function closeEsc(event) {
+  if (event.key === "Escape") {
+    const popupOpened = document.querySelector(".popup_opened");
+    popupClose(popupOpened);
+  }
+}
+
+function closeClick(event) {
+  if (event.target === event.currentTarget) {
+    const popupOpened = document.querySelector(".popup_opened");
+    popupClose(popupOpened);
+  }
+}
 
 function profileInfo() {
   nameInput.value = profileName.textContent;
@@ -41,14 +62,14 @@ function submitProfileForm (evt) {
     profileAddMe.textContent = jobInput.value;
 
 
-    popupToggle(popupEdit);
+    popupClose(popupEdit);
 }
 
 function getImgPopup(card) {
   imgPopup.src = card.link;
   imgPopup.alt = card.name;
   placeTitle.textContent = card.name;
-  popupToggle(popupImage);
+  popupOpen(popupImage);
 }
 
 function renderCard(card) {
@@ -85,7 +106,7 @@ function addCard(event) {
 
 
   renderCard(newCard);
-  popupToggle(popupAdd);
+  popupClose(popupAdd);
   cardsForm.reset();
 }
 
@@ -108,24 +129,22 @@ function setCardActionsListeners(card) {
 initialCards.map(createCard);
 initialCards.map(renderCard);
 
-
-
 openPopupEdit.addEventListener('click', function() {
-  popupToggle(popupEdit)
+  popupOpen(popupEdit)
   profileInfo()
 });
 openPopupAdd.addEventListener('click', function() {
-  popupToggle(popupAdd)
+  popupOpen(popupAdd)
 });
 
 closePopupEdit.addEventListener('click', function() {
-  popupToggle(popupEdit)
+  popupClose(popupEdit)
 });
 closePopupAdd.addEventListener('click', function() {
-  popupToggle(popupAdd)
+  popupClose(popupAdd)
 });
 closePopupImage.addEventListener('click', function(){
-  popupToggle(popupImage)
+  popupClose(popupImage)
 })
 
 formProfileElement.addEventListener('submit', submitProfileForm);

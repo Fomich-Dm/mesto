@@ -22,7 +22,10 @@
 @import url(../blocks/popup/__title-place/popup__titile-place.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__button/popup__button.css);
+@import url(../blocks/popup/__button/_inactive/popup__button_inactive.css);
 @import url(../blocks/popup/__img/popup__img.css);
+@import url(../blocks/popup/__input-error/popup__input-error.css);
+@import url(../blocks/popup/__input/_type_error/popup__input_type_error.css);
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/cards/__image/cards__image.css);
 @import url(../blocks/cards/__delete/cards__delete.css);
