@@ -25,7 +25,7 @@
       </section>
 
       <section class="cards">
-        <template class="cards-template">
+        <template class="cards-template card-template_type_default">
           <div class="cards__item">
             <img class="cards__image" alt="Фото загружно места">
             <button class="cards__delete" type="button" aria-label="удалить место"></button>
@@ -40,6 +40,8 @@
       <footer class="footer">
         <p class="footer__copyright">© 2022 Дмитрий Фомин</p>
       </footer>
+
+
 
       <div class="popup popup_edit">
         <div class="popup__content">
@@ -79,8 +81,7 @@
 
     </main>
   </div>
-  <script src="./scripts/validate.js"></script>
-  <script src="./scripts/cards.js"></script>
-  <script src="./scripts/index.js"></script>
+
+  <script type="module" src="./scripts/Index.js" defer></script>
 </body>
 </html>
