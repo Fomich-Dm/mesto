@@ -65,15 +65,14 @@ function submitProfileForm (evt) {
 }
 
 function renderCard(item) {
-
   const card = new Card(item, '.card-template_type_default');
   const cardElement = card.createCard();
- saveCard(cardElement);
-
+  return cardElement;
 }
 
 const saveCard = (item) => {
-  cards.prepend(item)
+  const cardElement = renderCard(item);
+  cards.prepend(cardElement);
 }
 
 const addCard = (event) => {
@@ -85,7 +84,7 @@ const addCard = (event) => {
   const newCard = {name : newNameCard, link : newImageCard};
 
 
-  renderCard(newCard);
+  saveCard(newCard);
   closePopup(popupAdd);
   formPlaceElement.reset();
   formAdd.disabledButtonPlace();
@@ -122,7 +121,7 @@ const formAdd = new FormValidator(formElem, formPlaceElement);
 formAdd.enableValidation();
 
 initialCards.forEach((item) => {
-  renderCard(item);
+  saveCard(item);
 });
 
 export {popupImage, imgPopup, placeTitle, openPopup};
