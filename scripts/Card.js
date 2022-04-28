@@ -1,4 +1,4 @@
-import {popupImage, imgPopup, placeTitle, openPopup} from './Index.js';
+import {popupImage, imgPopup, placeTitle, openPopup} from './index.js';
 
 
 
