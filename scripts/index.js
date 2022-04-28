@@ -1,5 +1,5 @@
 import {Card} from './Card.js';
-import {formElem} from './cards.js';
+import {formElem, initialCards} from './cards.js';
 import {FormValidator} from './FormValidator.js';
 
 const cards = document.querySelector('.cards');
@@ -12,12 +12,12 @@ const openPopupEdit = document.querySelector('.profile__edit-button');
 const openPopupAdd = document.querySelector('.profile__add-button');
 const closePopupEdit = document.querySelector('.popup__close_edit');
 const closePopupAdd = document.querySelector('.popup__close_add');
+const closePopupImage = document.querySelector('.popup__close_image');
 
 const nameInput =  document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_about');
 const profileName = document.querySelector('.profile__name');
 const profileAddMe =  document.querySelector('.profile__about-me');
-const popupButtonAdd = document.querySelector('.popup__button_add');
 
 const popupImage = document.querySelector('.popup_image');
 const imgPopup = document.querySelector('.popup__img');
@@ -54,11 +54,6 @@ function fillProfileInfo() {
   jobInput.value = profileAddMe.textContent;
 }
 
-function disabledButtonPlace() {
-  popupButtonAdd.setAttribute('disabled', 'disabled');
-  popupButtonAdd.classList.add('popup__button_inactive');
-}
-
 function submitProfileForm (evt) {
   evt.preventDefault();
 
@@ -72,8 +67,13 @@ function submitProfileForm (evt) {
 function renderCard(item) {
 
   const card = new Card(item, '.card-template_type_default');
-  const cardElementsfwe = card.createCard();
-  cards.prepend(cardElementsfwe);
+  const cardElement = card.createCard();
+ saveCard(cardElement);
+
+}
+
+const saveCard = (item) => {
+  cards.prepend(item)
 }
 
 const addCard = (event) => {
@@ -88,7 +88,7 @@ const addCard = (event) => {
   renderCard(newCard);
   closePopup(popupAdd);
   formPlaceElement.reset();
-  disabledButtonPlace()
+  formAdd.disabledButtonPlace();
 }
 
 
@@ -108,6 +108,9 @@ closePopupEdit.addEventListener('click', function() {
 closePopupAdd.addEventListener('click', function() {
   closePopup(popupAdd)
 });
+closePopupImage.addEventListener('click', function(){
+  closePopup(popupImage)
+})
 
 formProfileElement.addEventListener('submit', submitProfileForm);
 formPlaceElement.addEventListener('submit', addCard);
@@ -118,4 +121,8 @@ formEdit.enableValidation();
 const formAdd = new FormValidator(formElem, formPlaceElement);
 formAdd.enableValidation();
 
-export {popupImage, imgPopup, placeTitle, closePopup, openPopup};
+initialCards.forEach((item) => {
+  renderCard(item);
+});
+
+export {popupImage, imgPopup, placeTitle, openPopup};

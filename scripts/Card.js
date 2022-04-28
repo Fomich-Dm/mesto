@@ -1,5 +1,4 @@
-import {initialCards} from './cards.js';
-import {popupImage, imgPopup, placeTitle, closePopup, openPopup} from './Index.js';
+import {popupImage, imgPopup, placeTitle, openPopup} from './Index.js';
 
 
 
@@ -38,9 +37,6 @@ export class Card {
     this._element.querySelector('.cards__image').addEventListener('click', () => {
       this._handleImgClick();
     });
-    document.querySelector('.popup__close_image').addEventListener('click', () => {
-      this._handleButtonImgClick();
-    });
   }
 
   _handleLikeClick() {
@@ -48,7 +44,7 @@ export class Card {
   }
 
   _handleRemoveClick() {
-    this._element.querySelector('.cards__delete').closest('.cards__item').remove();
+    this._element.remove();
   }
 
  _handleImgClick() {
@@ -58,15 +54,5 @@ export class Card {
     openPopup(popupImage);
   }
 
-  _handleButtonImgClick() {
-    closePopup(popupImage);
-  }
-
 }
 
-initialCards.forEach((item) => {
-  const card = new Card(item, '.card-template_type_default');
-  const cardElement = card.createCard();
-
-  document.querySelector('.cards').append(cardElement);
-});
