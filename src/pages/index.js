@@ -7,14 +7,17 @@ import UserInfo from '../components/UserInfo.js';
 import {FormValidator} from '../components/FormValidator.js';
 import '../pages/index.css';
 
+function renderCard(item) {
+  const card = new Card(item, '.card-template_type_default', () => {
+    imgItem.open(item);
+  });
+  return card.createCard();
+}
+
 const cardList = new Section({
   item: initialCards,
   renderer: (item) => {
-    const card = new Card(item, '.card-template_type_default', () => {
-      imgItem.open(item);
-    });
-    const cardElement = card.createCard();
-    cardList.addItem(cardElement);
+    cardList.addItem(renderCard(item));
   }
 }, '.cards');
 
@@ -27,11 +30,7 @@ imgItem.setEventListener();
 const formAdd = new PopupWithForm({
   selectorPopup: '.popup_add',
   handleFormSubmit: (item) => {
-    const card = new Card(item, '.card-template_type_default', () => {
-      imgItem.open(item);
-    });
-    const cardElement = card.createCard();
-    cardList.addItem(cardElement);
+    cardList.addItem(renderCard(item));
     formAdd.close()
   }
 });
@@ -54,6 +53,7 @@ formEdit.setEventListener();
 const buttonOpenAdd = document.querySelector('.profile__add-button');
 buttonOpenAdd.addEventListener('click', () => {
   formAdd.open();
+  validFormAdd.disabledButtonPlace();
 })
 
 const buttonOpenEdit = document.querySelector('.profile__edit-button');

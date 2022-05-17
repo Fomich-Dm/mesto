@@ -12,8 +12,6 @@ constructor({selectorPopup, handleFormSubmit}) {
     this._formValues = {};
     this._inputList.forEach(input => {
       this._formValues[input.name] =  input.value;
-      this._formValues[input.link] =  input.value;
-      this._formValues[input.profession] =  input.value;
     });
 
     return this._formValues;

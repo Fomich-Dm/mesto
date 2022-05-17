@@ -44,12 +44,7 @@ export class FormValidator {
   };
 
   enableValidation = () => {
-    const formList = Array.from(document.querySelectorAll(this._form));
-
-    formList.forEach((item) => {
-
-      this._setEventListeners(item);
-    });
+    this._setEventListeners();
   };
 
   _hasInvalidInput = () => {
