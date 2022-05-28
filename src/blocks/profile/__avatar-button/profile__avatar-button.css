@@ -1,7 +1,5 @@
 .profile__avatar-button {
   background-image: url(../../../images/Vector.svg);
-  width: 26px;
-  height: 26px;
   background-color: rgba(0, 0, 0, .6);
   background-repeat: no-repeat;
   background-position: center;

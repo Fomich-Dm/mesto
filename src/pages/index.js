@@ -48,12 +48,16 @@ function renderCard(item) {
       .then(() => {
         card.handleRemoveClick();
         formDelete.close();
+      }).catch((err) => {
+        console.log(err);
       })
     })
   }, (item) => {
     apiLike.putLike(item)
     .then((item) =>{
       card.toggleLike(item);
+    }).catch((err) => {
+      console.log(err);
     })
   }, (item) => {
     apiLike.deleteLike(item)
