@@ -12,13 +12,14 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар">
+        <img class="profile__avatar"  alt="Аватар">
+        <button class="profile__avatar-button" type="button"></button>
         <div class="profile__info">
           <div class="profile__names">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <h1 class="profile__name"></h1>
             <button class="profile__edit-button" type="button" aria-label="Изменить профиль"></button>
           </div>
-          <p class="profile__about-me">Исследователь океана</p>
+          <p class="profile__about-me"></p>
         </div>
         <button class="profile__add-button" type="button" aria-label="Добавить контент"></button>
       </section>
@@ -30,7 +31,10 @@
             <button class="cards__delete" type="button" aria-label="удалить место"></button>
             <div class="cards__info">
               <h2 class="cards__name"></h2>
-              <button class="cards__like" type="button" aria-label="Поставить лайк"></button>
+              <div>
+                <button class="cards__like" type="button" aria-label="Поставить лайк"></button>
+                <p class="cards__number-of-likes"></p>
+              </div>
             </div>
           </div>
         </template>
@@ -49,7 +53,7 @@
             <h2 class="popup__title">Редактировать профиль</h2>
             <input class="popup__input popup__input_type_name" id="name-profile" type="text" name="name" value="Жак-Ив Кусто" placeholder="Ваше имя" minlength="2" maxlength="40" required>
             <span class="name-profile-error popup__input-error"></span>
-            <input class="popup__input popup__input_type_about" id="name-profession" type="text" name="profession" value="Исследователь океана" placeholder="Ваша профессия" minlength="2" maxlength="200" required>
+            <input class="popup__input popup__input_type_about" id="name-profession" type="text" name="about" value="Исследователь океана" placeholder="Ваша профессия" minlength="2" maxlength="200" required>
             <span class="name-profession-error popup__input-error"></span>
             <button class="popup__button popup__button_edit" aria-label="сохранить">Сохранить</button>
           </form>
@@ -66,6 +70,28 @@
             <input class="popup__input popup__input_type_image" id="link" type="url" name="link"  placeholder="Ссылка на картинку" required>
             <span class="link-error popup__input-error"></span>
             <button class="popup__button popup__button_add" aria-label="сохранить">Создать</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_avatar">
+        <div class="popup__content">
+          <button class="popup__close popup__close_avatar" type="button" aria-label="закрыть попап"></button>
+          <form class="popup__info popup__info_avatar" action="#" method="get" name="avtar-popup" novalidate>
+            <h2 class="popup__title">Обновить аватар</h2>
+            <input class="popup__input popup__input_type_avatar" id="avatar" type="url" name="avatar"  placeholder="Аватар профиля" required>
+            <span class="avatar-error popup__input-error"></span>
+            <button class="popup__button popup__button_delete" aria-label="сохранить">Сохранить</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_delete-image">
+        <div class="popup__content">
+          <button class="popup__close popup__close_delete" type="button" aria-label="закрыть попап"></button>
+          <form class="popup__info popup__info_delete" action="#" method="get" name="delete-popup" novalidate>
+            <h2 class="popup__title">Вы уверены?</h2>
+            <button class="popup__button popup__button_delete" aria-label="сохранить">Да</button>
           </form>
         </div>
       </div>

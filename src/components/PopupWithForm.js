@@ -5,12 +5,13 @@ constructor({selectorPopup, handleFormSubmit}) {
     super(selectorPopup);
     this._handleFormSubmit  = handleFormSubmit;
     this._element = this._selector.querySelector('.popup__info');
+    this._button = this._selector.querySelector('.popup__button');
   }
 
   _getInputValues() {
     this._inputList = this._element.querySelectorAll('.popup__input');
     this._formValues = {};
-    this._inputList.forEach(input => {
+    this._inputList.forEach((input) => {
       this._formValues[input.name] =  input.value;
     });
 
@@ -29,4 +30,18 @@ constructor({selectorPopup, handleFormSubmit}) {
     this._element.reset();
     super.close();
   }
+
+  loading() {
+    this._button.textContent = "Сохранение...";
+  }
+
+  loadingEnd(text) {
+    this._button.textContent = text;
+  }
+
 }
+
+
+
+
+
