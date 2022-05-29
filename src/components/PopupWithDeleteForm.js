@@ -3,7 +3,7 @@ import Popup from "./Popup.js";
 export default class PopupWithDeleteForm extends Popup {
   constructor(selectorPopup) {
     super(selectorPopup);
-    this._element = this._selector.querySelector('.popup__info');
+    this._element = this._popup.querySelector('.popup__info');
   }
 
   setEventListener() {
@@ -14,8 +14,8 @@ export default class PopupWithDeleteForm extends Popup {
     super.setEventListener();
   }
 
-  setSubmitAction(item) {
-    this._handleSubmitCallback = item;
+  setSubmitAction(action) {
+    this._handleSubmitCallback = action;
   }
 }
 

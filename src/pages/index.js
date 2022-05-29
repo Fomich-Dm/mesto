@@ -9,42 +9,22 @@ import '../pages/index.css';
 import Api from '../components/Api.js';
 import PopupWithDeleteForm from '../components/PopupWithDeleteForm.js';
 
-function api(item) {
-  const api = new Api({
-    url: item,
-    headers: {
-      authorization: '5c0d23ff-2f59-4bc2-a6ef-f772c38f9e88',
-      'Content-Type': 'application/json'
-    }
-  })
-  return api;
-}
 
-const apiUser = api("https://nomoreparties.co/v1/cohort-41/users/me");
-apiUser.getUserInfo()
-.then((item) => {
-  profile.setUserInfo(item);
-}).catch((err) => {
-  console.log(err);
-});
+const api = new Api({
+  url: "https://nomoreparties.co/v1/cohort-41",
+  headers: {
+    authorization: '5c0d23ff-2f59-4bc2-a6ef-f772c38f9e88',
+    'Content-Type': 'application/json'
+  }
+})
 
-const apiCard = api("https://mesto.nomoreparties.co/v1/cohort-41/cards");
-apiCard.getAllCards()
-.then((data) => {
-  cardList.renderItem(data);
-}).catch((err) => {
-  console.log(err);
-});
-
-const apiLike = api("https://mesto.nomoreparties.co/v1/cohort-41/cards/")
-const apiDeleteCard = api("https://mesto.nomoreparties.co/v1/cohort-41/cards/")
 function renderCard(item) {
-  const card = new Card(item, '.card-template_type_default', () => {
+  const card = new Card(item, '.card-template_type_default', userId, () => {
     imgItem.open(item);
   }, (item) => {
     formDelete.open();
     formDelete.setSubmitAction(() => {
-      apiDeleteCard.deleteCard(item)
+      api.deleteCard(item)
       .then(() => {
         card.handleRemoveClick();
         formDelete.close();
@@ -53,14 +33,14 @@ function renderCard(item) {
       })
     })
   }, (item) => {
-    apiLike.putLike(item)
+    api.putLike(item)
     .then((item) =>{
       card.toggleLike(item);
     }).catch((err) => {
       console.log(err);
     })
   }, (item) => {
-    apiLike.deleteLike(item)
+    api.deleteLike(item)
     .then((item) => {
       card.toggleLike(item);
     }).catch((err) => {
@@ -75,7 +55,8 @@ const cardList = new Section(
   (item) => {
     cardList.addItem(renderCard(item));
   },
-   '.cards');
+  '.cards'
+  );
 
 const imgItem = new PopupWithImage('.popup_image');
 
@@ -85,7 +66,7 @@ const formAdd = new PopupWithForm({
   selectorPopup: '.popup_add',
   handleFormSubmit: (data) => {
     formAdd.loading();
-    apiCard.addNewPlace(data)
+    api.addNewPlace(data)
     .then((data) => {
       cardList.addItem(renderCard(data));
       formAdd.close()
@@ -99,12 +80,11 @@ const formAdd = new PopupWithForm({
 
 formAdd.setEventListener();
 
-const apiAvatar = api('https://mesto.nomoreparties.co/v1/cohort-41/users/me/avatar')
 const formAvatar = new PopupWithForm({
   selectorPopup: '.popup_avatar',
   handleFormSubmit: (data) => {
     formAvatar.loading();
-    apiAvatar.editUserAvatar(data)
+    api.editUserAvatar(data)
     .then((data) => {
       profile.setUserInfo(data);
       formAvatar.close();
@@ -120,12 +100,11 @@ formAvatar.setEventListener();
 
 const profile = new UserInfo({name: '.profile__name', about:'.profile__about-me', avatar: '.profile__avatar'});
 
-const apiUserEdit = api("https://mesto.nomoreparties.co/v1/cohort-41/users/me")
 const formEdit = new PopupWithForm({
   selectorPopup: '.popup_edit',
   handleFormSubmit: (data) => {
     formEdit.loading();
-    apiUserEdit.editUserInfo(data)
+    api.editUserInfo(data)
     .then((data) => {
       profile.setUserInfo(data);
       formEdit.close();
@@ -142,7 +121,19 @@ formEdit.setEventListener();
 const formDelete = new PopupWithDeleteForm('.popup_delete-image')
 
 formDelete.setEventListener();
+let userId;
 
+Promise.all([api.getUserInfo(), api.getAllCards()])
+  .then(([userData, card]) => {
+    profile.setUserInfo(userData);
+    userId = userData._id;
+    cardList.renderItem(card);
+  }).catch((err) => {
+  console.log(err);
+});
+
+const inputName = document.querySelector('.popup__input_type_name');
+const inputProfession = document.querySelector('.popup__input_type_about');
 
 const buttonOpenAdd = document.querySelector('.profile__add-button');
 buttonOpenAdd.addEventListener('click', () => {
@@ -152,7 +143,10 @@ buttonOpenAdd.addEventListener('click', () => {
 
 const buttonOpenEdit = document.querySelector('.profile__edit-button');
 buttonOpenEdit.addEventListener('click', () => {
-  profile.getUserInfo();
+  const userInfo = profile.getUserInfo();
+  inputName.value = userInfo.name
+  inputProfession.value = userInfo.about
+
   formEdit.open();
 })
 
